@@ -1,6 +1,7 @@
 # py-leveldb
 
 Python bindings for [LevelDB](http://code.google.com/p/leveldb/)
+
 author: Arni Mar Jonsson (arnimarj@gmail.com)
 
 

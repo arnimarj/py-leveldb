@@ -1,0 +1,45 @@
+# py-leveldb
+
+Python bindings for [LevelDB](http://code.google.com/p/leveldb/)
+author: Arni Mar Jonsson (arnimarj@gmail.com)
+
+
+## Build Instructions
+
+First of all, you need to build the included leveldb library:
+
+    $ ./compile_leveldb.sh
+
+Then, the extension itself:
+
+    $ python setup.py build
+
+And, optionally, install it:
+
+    $ sudo python setup.py install
+
+
+## Example Usage
+
+    >>> import leveldb
+    >>> db = leveldb.LevelDB('./db')
+    >>> db.Put('hello', 'world')
+    >>> print db.Get('hello')
+    world
+    >>> db.Delete('hello')
+    >>> db.Get('hello')
+    Traceback (most recent call last):
+      File "<stdin>", line 1, in <module>
+    KeyError
+    >>> for i in xrange(10):
+    ...   db.Put(str(i), 'string_%s' % i)
+    ...
+    >>> print list(db.RangeIter(key_from = '2', key_to = '5'))
+    [('2', 'string_2'), ('3', 'string_3'), ('4', 'string_4'), ('5', 'string_5')]
+    >>> batch = leveldb.WriteBatch()
+    >>> for i in xrange(1000):
+    ...   db.Put(str(i), 'string_%s' % i)
+    ...
+    >>> db.Write(batch, sync = True)
+    >>>
+

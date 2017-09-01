@@ -1,7 +1,7 @@
 // Copyright (c) Arni Mar Jonsson.
 // See LICENSE for details.
 
-// The Python 2/3 compatability code was found in cporting.rst
+// The Python 2/3 compatibility code was found in cporting.rst
 
 #include "leveldb_ext.h"
 
